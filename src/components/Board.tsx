@@ -1,10 +1,25 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DragDropContext, Droppable, type DropResult } from '@hello-pangea/dnd';
 import List from './List';
 import { DragType, type IList } from '../util/GranProjMngrTypes';
+import api from '../services/axios';
 
 const Board = () => {
+
+  useEffect(() => {
+    const getBoard = async () => {
+      try {
+        const {data} = await api.get('/board/699e9f26bcdcd8cc5b22d876')
+        console.log("board data = ", data)
+      } catch (error) {
+        console.error('Error fetching board data:', error);
+      }
+    };
+
+      getBoard();
+  }, []);
+
   const [lists, setLists] = useState([
     {
       id: 'list-1',
