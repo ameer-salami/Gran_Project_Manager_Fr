@@ -1,7 +1,7 @@
-import axios,  { AxiosInstance } from "axios";
+import axios,  { type AxiosInstance } from "axios";
 
 const api:AxiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL:  import.meta.env.VITE_GRAN_PROJ_MNGR_API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
